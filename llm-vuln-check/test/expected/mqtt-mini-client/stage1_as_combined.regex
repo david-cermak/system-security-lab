@@ -1,0 +1,21 @@
+# End-to-end expectation for stage 1 (attack surface) on mqtt-mini-client.
+# After a successful `run.sh stage1 <repo>`, concatenate all runs/.../AS/AS*.md (excluding
+# _raw.md); every non-comment, non-empty line below must match that blob at least once
+# (grep -E -q). Lines starting with # are comments.
+#
+# Ground truth for what the model should surface: ../mqtt-mini-client/VULNS.md
+
+# Primary implementation file
+mqtt_client\.cpp
+
+# Hostname / argv overflow surface (VULNS §1)
+(strcpy|parse_args_pub|parse_args_sub)
+
+# Inbound PUBLISH topic handling (VULNS §2)
+(unsafe_copy_topic|topic_buf|topic_len)
+
+# Debug peek past topic (VULNS §3)
+debug_peek_past_topic
+
+# Remaining-length / framing accumulation (VULNS §4)
+read_remaining_length

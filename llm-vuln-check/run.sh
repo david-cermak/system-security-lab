@@ -51,7 +51,8 @@ fi
 
 TARGET="${2:?usage: run.sh stage1 <target-source-dir>}"
 mkdir -p "$RUN_DIR"/{AS,reports,assessments,logs}
-: "${MODEL_AS:=claude-sonnet-4}"
+# Unset → default slug; empty string → opencode CLI default (-m omitted). See lib/backends/opencode.sh.
+MODEL_AS="${MODEL_AS-claude-sonnet-4}"
 stage_attack_surface "$TARGET"
 echo "Done. AS directory: $RUN_DIR/AS"
 printf '  %s\n' "${AS_FILES[@]}"

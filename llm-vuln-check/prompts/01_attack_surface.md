@@ -25,7 +25,9 @@ surface worth a dedicated audit in the next pipeline stage.
 
    - `AS1.md`, `AS2.md`, … (contiguous integers, no gaps).
 
-3. Every `AS*.md` MUST use this shape:
+3. Every `AS*.md` MUST use this shape. Paths under `paths:` are **relative to the target tree**
+   (for example `src/foo.c`, `src/bar.cpp`, or top-level `mqtt_client.cpp` when there is no
+   `src/` directory):
 
    ```markdown
    ---
