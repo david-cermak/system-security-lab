@@ -1,4 +1,5 @@
-#pragma once
+#ifndef __HARDENING_TEST_IS_HARDENED
+#define __HARDENING_TEST_IS_HARDENED
 
 #include <version>
 
@@ -88,4 +89,6 @@
 #else
 #pragma message("__cpp_lib_hardened_vector : not defined")
 #endif
+
+#endif // __HARDENING_TEST_IS_HARDENED
 
